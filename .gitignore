@@ -14,3 +14,9 @@
 # Python
 __pycache__/
 *.pyc
+
+# Secrets never reach a remote. The floor refuses to stage one; this is the
+# stop that does not depend on a hook being registered.
+.env
+.env.*
+!.env.example

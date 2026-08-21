@@ -63,3 +63,18 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 **Closes when**: this harness's floor scopes itself to trees it serves, and `.coldstart-init` is no longer load-bearing here
 
 **Ref**: docs/work/04-safety-floor.md
+
+## coldstart-coding's unblock condition cannot be met as written
+
+**Subject**: coding gates itself on standard having an eval score, and the comparator that would supply one was dropped unbuilt
+
+**Since**: 2026-08-21
+
+**Closes when**: coding's SPEC restates its gate in terms this family can actually satisfy, the way standard's success condition was
+
+**Ref**: ../coldstart-coding/SPEC.md
+
+The same set-aside that unparked `standard` applies here, and it should be written down rather
+than assumed: `coding` starts without a score, because the extrinsic tier never existed. What is
+still owed is the honest half of the trade, which is that `coding` has to be judged by whether its
+own layer is separable and enforced rather than by beating `standard` on a number.
