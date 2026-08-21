@@ -23,7 +23,7 @@ clean tree.
 **Closed**: 2026-08-21
 
 **Goal**: fix the exact on-disk format of the three index files, the three folders and the
-pointer, and prove it by making this repo's own `docs/` the first instance.
+pointer, and prove it by making this repo's own `docs/` the first instance
 
 **Files to read**
 - `SPEC.md` (the memory model section)
@@ -67,10 +67,12 @@ pointer, and prove it by making this repo's own `docs/` the first instance.
 
 ## Session 2 — `tools/index.py`
 
-**Status**: pending
+**Status**: done
 
-**Goal**: the indexes stop being hand-written. One script scans each folder and rewrites the
-index above it.
+**Closed**: 2026-08-21
+
+**Goal**: the indexes stop being hand-written; one script scans each folder and rewrites the
+index above it
 
 **Files to read**
 - `docs/FORMAT.md`
@@ -109,7 +111,7 @@ index above it.
 **Status**: pending
 
 **Goal**: prove the model does the job it exists for, which is that a session can start from the
-pointer and nothing else.
+pointer and nothing else
 
 **Files to read**
 - `docs/PROGRESS.md`

@@ -12,7 +12,7 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 ## The ColdStart parking card still says parked
 
-**Subject**: the control tree records the program as parked, which the 2026-08-21 unparking contradicts.
+**Subject**: the control tree records the program as parked, which the 2026-08-21 unparking contradicts
 
 **Since**: 2026-08-21
 
@@ -22,7 +22,7 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 ## coldstart-minimal SPEC has not been amended to this memory model
 
-**Subject**: confirmed stale: still stamped parked, still lists the warehouse under abandons, has no three-index model.
+**Subject**: confirmed stale: still stamped parked, still lists the warehouse under abandons, has no three-index model
 
 **Since**: 2026-08-21
 
@@ -34,7 +34,7 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 ## CHARTER.md is stale on the unparking
 
-**Subject**: the charter still carries the 2026-08-19 parked banner and gates the downstream harnesses on a score.
+**Subject**: the charter still carries the 2026-08-19 parked banner and gates the downstream harnesses on a score
 
 **Since**: 2026-08-21
 
@@ -44,7 +44,7 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 ## The ColdStart control tree has not moved into claude-harnesses/
 
-**Subject**: the charter says the tree moves once the 7-day soak closes on 2026-08-22; until then a symlink stands.
+**Subject**: the charter says the tree moves once the 7-day soak closes on 2026-08-22; until then a symlink stands
 
 **Since**: 2026-08-21
 

@@ -95,3 +95,32 @@ caps, card caps and the room-split ritual Â· `done.py`'s 75-module tool family Â
 whose subject is any of the above.
 
 Each is dropped for the same reason: it exists only to police a split this model does not have.
+
+## An index line carries its source field verbatim
+
+**Decided**: 2026-08-21
+
+`tools/index.py` renders the `subject`, `Goal` and `Subject` fields exactly as the content file
+writes them. It does not re-punctuate, re-case or paraphrase. The alternative is a generator with
+an editorial opinion, which makes an index line something you can no longer trace to a line in a
+file, and makes two runs of the tool differ whenever the opinion changes.
+
+The consequence lands on the author, not the tool: a one-line field is written to read as an
+index line, which means no trailing full stop and one sentence rather than two. Session 1's
+hand-written indexes had silently applied that style while the source files did not carry it, so
+the first generated run differed from them in six lines. The resolution was to fix the source
+fields, not to teach the tool to trim, and the indexes then matched the hand-written ones byte
+for byte. That match is the evidence session 1's format was implementable as written.
+
+## The generated region is bounded by a marker, so a hand-owned header can sit above it
+
+**Decided**: 2026-08-21
+
+Each index file preserves everything through the line containing `GENERATED BELOW THIS LINE` and
+replaces everything after it. `PROGRESS.md` therefore preserves on both sides: the pointer front
+matter and the header comment above, the queue and log below. Prose a human wants to keep in an
+index file goes above the marker, which is where the "sections 2-7 are planned just in time"
+paragraph moved at this session.
+
+`index.py --check` writes nothing and exits non-zero when any index is out of date. That is the
+form the `/done` no-op assertion takes, so the close does not have to diff files itself.

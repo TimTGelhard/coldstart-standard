@@ -1,7 +1,8 @@
 # FORMAT — the memory model, on disk
 
-> Written at section 1 session 1, 2026-08-21. This is the contract `tools/index.py` implements
-> in session 2, so it is written before the tool and not derived from it. The read protocol and
+> Written at section 1 session 1, 2026-08-21, and implemented by `tools/index.py` at session 2.
+> The contract came first and the tool followed it; where session 2 amended this file, the
+> amendment is recorded in `decisions/memory-model.md`. The read protocol and
 > the close protocol are added to this file in session 3.
 
 The model is one mechanic applied three times: an **index file** that holds status and a pointer
@@ -122,7 +123,7 @@ parse. `decisions/` is indexed per file and its internals are prose, with one co
 **Status**: pending
 
 **Goal**: the indexes stop being hand-written; one script scans each folder and rewrites the
-index above it.
+index above it
 ```
 
 `Status` is one of `pending`, `active`, `done`, `blocked`. `Goal` is one line and becomes the
@@ -134,7 +135,7 @@ verify, output) is free-form and the generator ignores it.
 ```markdown
 ## coldstart-minimal SPEC is stale
 
-**Subject**: minimal's spec still carries the pre-amendment memory model.
+**Subject**: minimal's spec still carries the pre-amendment memory model
 
 **Since**: 2026-08-21
 
@@ -205,12 +206,21 @@ Fields in order: `title` · `subject` · link · count of `##` headings · `upda
 
 Fields in order: item heading · `Subject` · link · `Since` · `Tag` if present.
 
+Every rendered field is carried **verbatim** from its source line. The generator does not
+re-punctuate or paraphrase, so a one-line field is authored to read as an index line: one
+sentence, no trailing full stop. See `decisions/memory-model.md`.
+
 **The generated region is marked.** Each index file ends its header comment with the literal line
 `GENERATED BELOW THIS LINE`. Everything above that marker (the title and the comment) is preserved
 verbatim; everything below it is replaced wholesale on every run. `PROGRESS.md` is the one file
 with content the generator must preserve on *both* sides: the pointer front matter above, and the
 marker's region below. Ordering is deterministic and sorting is by ASCII
 slug, so a second run on an unchanged tree is byte-identical.
+
+`python tools/index.py` rewrites the three files; `python tools/index.py --check` writes nothing
+and exits non-zero when any of them is out of date, which is how `/done` asserts its regeneration
+is a no-op. A content file that breaks any rule in sections 2 to 4 is a hard error naming the
+file, and no index is written on that run.
 
 ## 6. Topic clustering
 
