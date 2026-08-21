@@ -46,3 +46,23 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 **Tag**: later
 
+## `/prep`'s output is not resumable until an unrelated session closes
+
+**Subject**: a freshly planned section is invisible to a cold resume: only `/done` repoints the pointer and regenerates the queue
+
+**Since**: 2026-08-21
+
+**Closes when**: a cold `/coldstart` run straight after `/prep` lands on the newly planned session with no intervening close
+
+**Ref**: docs/work/02-commands.md
+
+## The three commands are registered nowhere, so they cannot be typed
+
+**Subject**: `commands/` and `skills/` sit unmapped at the repo root, so typing `/coldstart` here loads v1's skill instead
+
+**Since**: 2026-08-21
+
+**Closes when**: the installer maps the payload into `.claude/` and section 2 session 4's verify runs against installed commands
+
+**Ref**: docs/work/02-commands.md
+

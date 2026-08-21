@@ -2,6 +2,12 @@
 .coldstart-heartbeats
 .coldstart-trace
 
+# The installed copy, written by install.sh. The source tree at the repo root is
+# the single truth; this is a build output, and committing it would put every
+# file in git twice with no way to tell which copy is authoritative.
+# A fresh clone runs `bash install.sh` once before the commands are typeable.
+.claude/
+
 # macOS
 .DS_Store
 

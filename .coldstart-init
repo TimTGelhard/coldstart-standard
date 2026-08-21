@@ -1,0 +1,4 @@
+{
+  "mount": "not-a-coldstart-v1-mount",
+  "_why": "This repo is coldstart-standard, a separate harness with its own pointer schema (active_work, not v1's active_section) and its own floor arriving in section 4. The v1 install at $COLDSTART_ROOT claims any tree holding docs/PROGRESS.md (root.py MOUNT_MARKERS) and then enforces its mode contract against a pointer it cannot read, which blocked /prep entirely. This declaration resolves to no valid mount, so resolve_served() returns inactive for this tree and v1's mode contract stops governing it. v1's risk list and env-leak guard are unaffected: they run before mode_violation and do not consult the served root. Reverse by deleting this file."
+}

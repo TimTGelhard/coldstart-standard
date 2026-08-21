@@ -53,3 +53,13 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 **Ref**: ../../CHARTER.md
 
 **Tag**: later
+
+## The v1 install claims any tree holding `docs/PROGRESS.md`
+
+**Subject**: v1's floor governed this repo against a pointer schema it cannot read, and the workaround leans on a foreign error path
+
+**Since**: 2026-08-21
+
+**Closes when**: this harness's floor scopes itself to trees it serves, and `.coldstart-init` is no longer load-bearing here
+
+**Ref**: docs/work/04-safety-floor.md
