@@ -1,6 +1,6 @@
 ---
 title: Commands
-subject: three commands (coldstart, prep, done), why /coldstart was restored, and what each dropped wrapper cost
+subject: three commands, the payload layout they ship in, and the close's rules: refuse on red, never write a restrictive mode
 topic: commands
 updated: 2026-08-21
 ---
@@ -38,3 +38,52 @@ is 3,599 B against a 12,000 B ceiling, so bytes were never the constraint here.
 - `bucket` — out.
 - `adopt` — **deferred, not dropped**. It is a real facility and it lands once `standard` runs on
   a real project.
+
+## The repo root mirrors the payload, and only the installer knows the mapping
+
+**Decided**: 2026-08-21
+
+`commands/`, `skills/`, `agents/`, `hooks/` and `chapters/` sit at the repo root beside `tools/`.
+Section 6's installer maps them into `.claude/` and `.coldstart/`.
+
+The source tree therefore does not look like the installed tree, on purpose. The alternative is a
+root that already looks installed, which puts the mapping in two places and makes a wrong copy the
+default failure. One place owns it, and that place is the installer.
+
+## The three lifecycle skills are counted on top of the SPEC census, not inside it
+
+**Decided**: 2026-08-21
+
+`/coldstart`, `/prep` and `/done` are separate skills from section 3's four routers, so resident
+cost grows by three skill descriptions over what the SPEC census predicted. Each description is
+written to a ~250 B target, and section 7 reports the measured number rather than the predicted
+one. An estimate that is never checked is how the previous harness lost its floor.
+
+## /prep may write the pointer's `mode` field, and nothing else
+
+**Decided**: 2026-08-21
+
+`FORMAT.md` section 1 rule 1 says `/done` is the pointer's single writer. This is the one named
+exception: a planning pass sets `mode: prep` at its start and touches none of the other six fields.
+
+The exception is narrow because the reason is narrow — the safety floor reads `mode` off disk while
+the session runs, so a planning session has to be able to declare itself before it does anything.
+Session 3 writes the exception into `FORMAT.md` itself rather than leaving this file as the only
+place the contradiction is resolved.
+
+## A red verify does not close, and the close never writes a restrictive mode
+
+**Decided**: 2026-08-21
+
+Two rules that could have been left implicit in `FORMAT.md` section 9 and are instead written into
+`skills/done/SKILL.md` where the close can read them without opening a second file.
+
+A failed or unrun check leaves the session's `Status` untouched and the pointer still pointing at
+it. The close does not fix the check, and does not close-and-file-the-failure-as-a-fix: the pointer
+is the only thing standing between the next cold session and the fact that the work is unfinished.
+
+And the close writes `mode: build` or omits it. `mode` constrains the *running* session, and the
+close's own last step is a commit, so a close that writes `mode: prep` denies itself its remaining
+steps. The previous harness found this by locking its own tree before the commit and unblocking the
+last two steps by hand.
+
