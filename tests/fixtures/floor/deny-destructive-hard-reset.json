@@ -1,0 +1,13 @@
+{
+  "note": "",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "deny",
+  "category": "destructive",
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git reset --hard HEAD~3"
+    }
+  }
+}

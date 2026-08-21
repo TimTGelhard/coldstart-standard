@@ -1,0 +1,13 @@
+{
+  "note": "the harness's own installer, which does rm -rf on two directories it owns",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "sh install.sh"
+    }
+  }
+}

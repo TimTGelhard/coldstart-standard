@@ -1,0 +1,13 @@
+{
+  "note": "the other legitimate path the refusal names: prove it is populated without printing it",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "test -n \"$DATABASE_URL\" && echo set"
+    }
+  }
+}

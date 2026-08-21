@@ -1,0 +1,13 @@
+{
+  "note": "running the suite is ordinary build work",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "python3 -m pytest tests -q"
+    }
+  }
+}

@@ -1,7 +1,8 @@
 # coldstart-standard — SPEC
 
 > Written before the build, per the family contract (`../../CHARTER.md`).
-> Status: **scoped, not built.** 2026-08-19. Amended 2026-08-21.
+> Status: **partly built** — 3 of 7 sections. 2026-08-19, amended 2026-08-21.
+> The per-section state is at the bottom of this file, under Build state.
 
 > **UNPARKED — 2026-08-21 (Tim).** The 2026-08-19 parking held because the program's one rule
 > is that a harness is only interesting if it can be compared, and no comparator exists. That
@@ -245,7 +246,31 @@ something on the drop list came back and the ledger should say which.
 
 ## Build state
 
-Not started; no files yet beyond this one. Unblocked as of 2026-08-21: the harness ships
-without a comparator score, by owner's call, and the success condition above is written to
-match. The first build step is the memory model plus the three commands, because everything
-else in the family inherits them.
+> Updated 2026-08-21. The line below used to say "not started", which stopped being true the
+> same day. It is kept current here rather than in a second status file, because a status file
+> beside a spec is a status file that disagrees with it by the end of the week.
+
+**Three of seven sections built**, and the repo is public.
+
+| # | Section | State |
+|---|---|---|
+| 1 | `memory-model` | done — three indexes, three folders, `tools/index.py` derives the indexes by scanning |
+| 2 | `commands` | sessions 1-3 done; session 4 blocked on displacing the user-level v1 skills |
+| 3 | `resident-surface` | not started. **The largest remaining gap**: there is no `CLAUDE.md`, no routers, no agents |
+| 4 | `safety-floor` | done — `hooks/pre-tool-floor.sh`, three deny categories, 46 fixtures, firing artifact on file |
+| 5 | `verify` | done — `tools/verify.py`, three checks, each shown going red on a planted defect |
+| 6 | `install` | session 1 done, session 3 partly done (hooks + settings merge, pulled in by section 4). No uninstall, no `--weight` |
+| 7 | `measure` | not started |
+
+Two things landed that this ledger did not predict, both recorded in `decisions/`:
+
+- **A fourth secrets rule**: staging credential material into git, not only reading it. Reading
+  leaks to a transcript on this machine; staging leaks to every fork and cache of the remote,
+  permanently, and rotation is the only remedy.
+- **A SessionStart hook** that injects the pointer unasked. The census already budgeted ~800 B
+  for an "orientation payload"; this is that line item, measured at 862 B, and it is what makes
+  the one thing this harness is for true when `/coldstart` is *not* typed.
+
+The resident surface currently measures **2,540 B, 21% of the declared 12,000 B**, with the three
+largest predicted items (`CLAUDE.md`, the profile, the routers) still unbuilt. `tools/verify.py`
+prints the number; it is not a `MEASURE.md` census yet, which is section 7.

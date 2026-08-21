@@ -1,0 +1,13 @@
+{
+  "note": "a template is published on purpose",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cp .env.example .env"
+    }
+  }
+}

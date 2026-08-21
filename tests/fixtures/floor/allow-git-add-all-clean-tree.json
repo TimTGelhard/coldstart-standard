@@ -1,0 +1,13 @@
+{
+  "note": "bulk staging is refused only while an unignored secret file is actually present",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A"
+    }
+  }
+}

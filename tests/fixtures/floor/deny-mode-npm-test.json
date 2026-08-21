@@ -1,0 +1,13 @@
+{
+  "note": "not a read, and prep is not the time",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "deny",
+  "category": "mode",
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "npm test"
+    }
+  }
+}

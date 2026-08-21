@@ -1,0 +1,13 @@
+{
+  "note": "the exact command the secrets refusal recommends; the floor must not forbid its own escape hatch",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cut -d= -f1 .env"
+    }
+  }
+}

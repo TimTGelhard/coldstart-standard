@@ -1,0 +1,13 @@
+{
+  "note": "writing the plan IS the planning pass",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "docs/work/05-verify.md"
+    }
+  }
+}

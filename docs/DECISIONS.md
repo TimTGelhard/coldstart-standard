@@ -6,6 +6,8 @@
      GENERATED BELOW THIS LINE -->
 
 - **Commands** — three commands, the payload layout they ship in, and the close's rules: refuse on red, never write a restrictive mode · [decisions/commands.md](decisions/commands.md) · 12 entries · 2026-08-21
-- **Install** — in-project install rather than a parallel root, the .claude / .coldstart split, and the weight selector · [decisions/install.md](decisions/install.md) · 3 entries · 2026-08-21
+- **Install** — in-project install rather than a parallel root, the .claude / .coldstart split, and the weight selector · [decisions/install.md](decisions/install.md) · 7 entries · 2026-08-21
 - **Memory model** — three indexes over three folders, indexes derived by scanning, and the machinery deliberately not built · [decisions/memory-model.md](decisions/memory-model.md) · 12 entries · 2026-08-21
+- **Safety floor** — the two open calls the plan left, the fourth rule the build added, and the one place the floor fails open · [decisions/safety-floor.md](decisions/safety-floor.md) · 6 entries · 2026-08-21
 - **Self-hosting** — this repo runs its own memory model during its own build, and ships without a comparator score · [decisions/self-hosting.md](decisions/self-hosting.md) · 4 entries · 2026-08-21
+- **Verify** — why three checks rather than thirty, what each one watches, and the self-test bar each had to clear · [decisions/verify.md](decisions/verify.md) · 4 entries · 2026-08-21

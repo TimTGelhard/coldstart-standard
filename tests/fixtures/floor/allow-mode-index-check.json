@@ -1,0 +1,13 @@
+{
+  "note": "the harness's own read-only verify has to survive its own floor",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "python3 tools/index.py --check"
+    }
+  }
+}

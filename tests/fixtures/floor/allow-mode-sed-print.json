@@ -1,0 +1,13 @@
+{
+  "note": "sed -n prints; sed -i edits. The flag is the whole difference",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "sed -n '1,40p' docs/FORMAT.md"
+    }
+  }
+}

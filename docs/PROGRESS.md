@@ -1,11 +1,11 @@
 ---
-active_work: docs/work/02-commands.md
+active_work: docs/work/03-resident-surface.md
 mode: build
-next_action: section 2 session 4 — run a section through /prep, /coldstart, /done with no prose, then census the resident bytes
-blockers: []
-reading: [docs/work/02-commands.md, SPEC.md]
+next_action: section 3 session 1 — cut ColdStart's 84 chapters to the 12-15 this harness carries
+blockers: ["section 2 session 4 needs the user-level coldstart/prep/done skills displaced from ~/.claude, which is the operator's call"]
+reading: [docs/work/03-resident-surface.md, SPEC.md]
 updated: 2026-08-21
-resume_note: "the three commands exist and section 3 is planned, so session 4 is the loop running unattended and the first real byte count"
+resume_note: "the floor and the three checks are built and green, so the gap is now the resident surface: there is no CLAUDE.md at all"
 ---
 
 # Progress — coldstart-standard
@@ -29,9 +29,14 @@ time, one section at a time.
 | 3.2 | resident-surface s2 | four skills route into the chapters, at a quarter of ColdStart's per-router description cost, and each one is proved to fire | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
 | 3.3 | resident-surface s3 | the always-loaded prose exists — delegation, signaling, the safety line and the pointer at the lifecycle — plus one profile file the operator edits by hand | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
 | 3.4 | resident-surface s4 | the three agents exist, and the whole resident surface is measured against the SPEC's predicted census with the delta stated either way | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
+| 6.2 | install s2 | install writes everything the host reads and everything the harness owns, into the two directories the split calls for | pending | [work/06-install.md](work/06-install.md) |
+| 6.3 | install s3 | install merges into `.claude/settings.json` without eating what is already there, and registers whatever hooks the source tree actually holds | pending | [work/06-install.md](work/06-install.md) |
+| 6.4 | install s4 | the install is proved reversible and idempotent against a real tree, and `--weight` ships with its one arm | pending | [work/06-install.md](work/06-install.md) |
 
 ## Log — closed sections
 
 | # | Section | What it was | Closed | File |
 |---|---|---|---|---|
 | 01 | memory-model | the three indexes, the three folders, and the tool that derives the indexes by scanning | closed 2026-08-21 | [work/01-memory-model.md](work/01-memory-model.md) |
+| 04 | safety-floor | the PreToolUse hook that denies rather than asks, its coupling to the pointer's mode field, and the proof it fires | closed 2026-08-21 | [work/04-safety-floor.md](work/04-safety-floor.md) |
+| 05 | verify | three checks, each with an inject-one-defect self-test, and the close gate that runs them | closed 2026-08-21 | [work/05-verify.md](work/05-verify.md) |

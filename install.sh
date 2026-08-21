@@ -7,9 +7,14 @@
 # the repo root registered nowhere, and typing `/coldstart` in this tree loads
 # whatever other install happens to own the name.
 #
-# It writes `.claude/commands/` and `.claude/skills/` and NOTHING else. No
-# `.coldstart/`, no settings merge, no hook registration, no uninstall. Those are
-# sessions 2 to 4, and this file stays readable in one screen until then.
+# It writes `.claude/commands/`, `.claude/skills/`, `.claude/hooks/` and the hook
+# registration inside `.claude/settings.json`. Nothing else: no `.coldstart/`, no
+# uninstall, no `--weight` selector. Those are sessions 2 to 4.
+#
+# The hooks arrived at section 4. They are installed the same way as their
+# siblings and for the same reason -- a floor that is only in the source tree is
+# registered nowhere, so it never fires, and a floor that never fires is the most
+# expensive kind of missing: the session looks protected and is not.
 #
 # Copy, not symlink (decisions/install.md): the installed copy has to be a
 # different file from the one being edited, or a passing run stops proving that
@@ -47,14 +52,15 @@ displaced_skills="$cfg/skills-displaced-by-coldstart-standard"
 
 # Refuse to run against a tree that is not this harness, because the first thing
 # this script does is delete two directories.
-if [ ! -f "$root/SPEC.md" ] || [ ! -d "$root/commands" ] || [ ! -d "$root/skills" ]; then
+if [ ! -f "$root/SPEC.md" ] || [ ! -d "$root/commands" ] || [ ! -d "$root/skills" ] \
+   || [ ! -d "$root/hooks" ]; then
   echo "install.sh: $root does not look like the coldstart-standard source tree" >&2
-  echo "  (expected SPEC.md, commands/ and skills/ beside this script)" >&2
+  echo "  (expected SPEC.md, commands/, skills/ and hooks/ beside this script)" >&2
   exit 1
 fi
 
-rm -rf "$target/commands" "$target/skills"
-mkdir -p "$target/commands" "$target/skills"
+rm -rf "$target/commands" "$target/skills" "$target/hooks"
+mkdir -p "$target/commands" "$target/skills" "$target/hooks"
 
 commands=0
 for f in "$root"/commands/*.md; do
@@ -71,6 +77,44 @@ for d in "$root"/skills/*/; do
   cp "$d"*.md "$target/skills/$name/"
   skills=$(( skills + 1 ))
 done
+
+hooks=0
+for f in "$root"/hooks/*.sh "$root"/hooks/*.py; do
+  [ -f "$f" ] || continue
+  cp "$f" "$target/hooks/"
+  case "$f" in *.sh) chmod +x "$target/hooks/$( basename "$f" )" ;; esac
+  hooks=$(( hooks + 1 ))
+done
+
+# Merge the registration rather than overwrite it. A project settings.json may
+# already carry permissions, env or another team's hooks, and an installer that
+# replaces the file wholesale eats someone's work the first time it runs in a
+# real repo. Only this harness's own entries are replaced, matched by the script
+# path they point at, so a second run is a no-op rather than a duplicate.
+if [ -f "$root/hooks/settings.json" ]; then
+  python3 - "$root/hooks/settings.json" "$target/settings.json" <<'MERGE'
+import json, sys
+from pathlib import Path
+
+fragment_path, target_path = Path(sys.argv[1]), Path(sys.argv[2])
+fragment = json.loads(fragment_path.read_text(encoding="utf-8"))
+try:
+    settings = json.loads(target_path.read_text(encoding="utf-8"))
+except (OSError, json.JSONDecodeError):
+    settings = {}
+
+live = settings.setdefault("hooks", {})
+for event, entries in fragment.get("hooks", {}).items():
+    ours = {h.get("command") for e in entries for h in e.get("hooks", [])}
+    kept = [e for e in live.get(event, [])
+            if not any(h.get("command") in ours for h in e.get("hooks", []))]
+    live[event] = kept + entries
+
+target_path.parent.mkdir(parents=True, exist_ok=True)
+target_path.write_text(json.dumps(settings, indent=2) + "\n", encoding="utf-8")
+MERGE
+  echo "registered the floor and the session pointer in .claude/settings.json"
+fi
 
 moved=0
 kept=0
@@ -129,7 +173,7 @@ for d in "$root"/skills/*/; do
   moved=$(( moved + 1 ))
 done
 
-echo "installed $commands command(s) and $skills skill(s) into .claude/"
+echo "installed $commands command(s), $skills skill(s) and $hooks hook file(s) into .claude/"
 if [ "$moved" -gt 0 ]; then
   echo "displaced $moved user-level entr(ies) that shadowed them, into:"
   echo "  $displaced"

@@ -1,0 +1,13 @@
+{
+  "note": "/prep sets the mode field itself, so it must be able to write here",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "docs/PROGRESS.md"
+    }
+  }
+}

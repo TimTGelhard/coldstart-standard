@@ -1,0 +1,13 @@
+{
+  "note": "unset variable expands to nothing, so this is rm -rf /",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "deny",
+  "category": "destructive",
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "rm -rf $BUILD_DIR/"
+    }
+  }
+}

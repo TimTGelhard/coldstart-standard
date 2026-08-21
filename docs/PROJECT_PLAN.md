@@ -15,8 +15,8 @@
 | 1 | `memory-model` | The three indexes, the three folders, and the tool that derives the indexes by scanning | — | done |
 | 2 | `commands` | `/coldstart`, `/prep`, `/done` — the lifecycle loop, each one skill deep | 1, and 6 s1 for its own session 4 | pending |
 | 3 | `resident-surface` | `CLAUDE.md`, the distilled profile, 4 routers, 3 agents, the chapter cut | 1, 2 | pending |
-| 4 | `safety-floor` | The PreToolUse hook that denies, plus its firing artifact | 1 | pending |
-| 5 | `verify` | The three checks, each with an inject-one-defect self-test | 1, 3, 4 | pending |
+| 4 | `safety-floor` | The PreToolUse hook that denies, plus its firing artifact | 1 | done |
+| 5 | `verify` | The three checks, each with an inject-one-defect self-test | 1, 3, 4 | done |
 | 6 | `install` | One command, reversible, idempotent, `--weight` selector with one arm | 2 s1-s3 for its own session 1; 2, 3, 4, 5 for the rest | pending |
 | 7 | `measure` | `MEASURE.md` census of the rendered surface + the containment test | 6 | pending |
 

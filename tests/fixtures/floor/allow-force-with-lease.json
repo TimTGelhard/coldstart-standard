@@ -1,0 +1,13 @@
+{
+  "note": "the safe form of the thing the floor refuses",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git push --force-with-lease origin main"
+    }
+  }
+}

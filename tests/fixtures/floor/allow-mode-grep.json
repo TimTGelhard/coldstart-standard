@@ -1,0 +1,13 @@
+{
+  "note": "",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "grep -rn pointer docs"
+    }
+  }
+}

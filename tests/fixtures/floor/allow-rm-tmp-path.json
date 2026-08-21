@@ -1,0 +1,13 @@
+{
+  "note": "absolute is not the same as dangerous",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "rm -rf /tmp/scratch/build"
+    }
+  }
+}

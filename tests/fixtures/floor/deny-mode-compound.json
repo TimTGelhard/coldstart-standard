@@ -1,0 +1,13 @@
+{
+  "note": "one safe half does not carry the other",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "deny",
+  "category": "mode",
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cat SPEC.md && npm run build"
+    }
+  }
+}

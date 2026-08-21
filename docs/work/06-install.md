@@ -53,7 +53,7 @@ discovered today. Session 4 files anything new into the same topic file at its c
 
 ## Session 1 — the minimal map
 
-**Status**: pending
+**Status**: done
 
 **Goal**: this harness's three commands become typeable in this repo, by mapping `commands/` and
 `skills/` into `.claude/` and nothing else
@@ -139,6 +139,18 @@ directories the split calls for
 ## Session 3 — settings and registration
 
 **Status**: pending
+
+> **Partly landed early, 2026-08-21, pulled in by section 4.** The floor needed a registration
+> to be a floor at all, so `install.sh` now copies `hooks/` into `.claude/hooks/` and merges
+> `hooks/settings.json` into `.claude/settings.json`, replacing only entries that point at this
+> harness's own script paths. Idempotence is asserted by hashing the file across two runs.
+>
+> What is still owed here, and why this session stays open: the registration is read from a
+> tracked fragment rather than from whatever `hooks/` actually holds, so a new hook script needs
+> a fragment edit — build step 2 asked for the opposite. There is no uninstall, so the merge is
+> still a one-way door (step 3). There is no conflict refusal: a genuine disagreement on a key
+> is overwritten rather than named (step 1). The self-install guard (step 4) is untested. The
+> artifact (step 5) exists for the floor but not for the registration path itself.
 
 **Goal**: install merges into `.claude/settings.json` without eating what is already there, and
 registers whatever hooks the source tree actually holds

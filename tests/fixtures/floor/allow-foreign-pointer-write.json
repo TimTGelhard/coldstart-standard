@@ -1,0 +1,13 @@
+{
+  "note": "a v1 pointer: the mode contract must not govern a tree this harness does not serve",
+  "mode": "prep",
+  "pointer": "foreign",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "tools/new_tool.py"
+    }
+  }
+}

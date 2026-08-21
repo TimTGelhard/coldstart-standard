@@ -1,0 +1,13 @@
+{
+  "note": "",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "SPEC.md"
+    }
+  }
+}

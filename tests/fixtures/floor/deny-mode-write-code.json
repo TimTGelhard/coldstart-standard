@@ -1,0 +1,13 @@
+{
+  "note": "the plan surface is docs/work, not tools/",
+  "mode": "prep",
+  "pointer": "standard",
+  "expect": "deny",
+  "category": "mode",
+  "payload": {
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "tools/new_tool.py"
+    }
+  }
+}

@@ -56,7 +56,7 @@ files these into `decisions/safety-floor.md` at its close.
 
 ## Session 1 — the deny rules
 
-**Status**: pending
+**Status**: done
 
 **Goal**: the three deny categories exist as one hook script with a fixture-driven test that feeds
 it real tool payloads and asserts refusal and, just as hard, non-refusal
@@ -100,7 +100,7 @@ it real tool payloads and asserts refusal and, just as hard, non-refusal
 
 ## Session 2 — the mode contract
 
-**Status**: pending
+**Status**: done
 
 **Goal**: the floor reads this tree's pointer at tool time, denies any shell it cannot prove
 read-only while the mode is `prep`, and stays silent in a tree it does not serve
@@ -153,7 +153,7 @@ read-only while the mode is `prep`, and stays silent in a tree it does not serve
 
 ## Session 3 — proof it fires
 
-**Status**: pending
+**Status**: done
 
 **Goal**: each deny category is shown refusing a real command in a real session, captured dated,
 so the section closes on evidence rather than on a passing test

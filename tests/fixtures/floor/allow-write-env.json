@@ -1,0 +1,13 @@
+{
+  "note": "writing a secret file is setup; reading it into the transcript is the leak",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": ".env"
+    }
+  }
+}

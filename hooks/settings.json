@@ -1,0 +1,36 @@
+{
+  "_comment": [
+    "The registration this harness's hooks need, and the source of truth for it.",
+    "install.sh merges this into .claude/settings.json, which is a build output and",
+    "is gitignored: committing both would leave two files claiming to be the",
+    "registration with no way to tell which one the host actually read.",
+    "$CLAUDE_PROJECT_DIR resolves to the repo root, so the installed copy under",
+    ".claude/hooks/ is what runs -- not the source tree beside it. That is the same",
+    "copy-not-symlink call decisions/install.md made for commands and skills: a",
+    "passing run has to prove the installed copy works."
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/pre-tool-floor.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-pointer.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

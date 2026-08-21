@@ -66,3 +66,26 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 **Ref**: docs/work/02-commands.md
 
+## The cold-agent check on the floor was not run
+
+**Subject**: every floor refusal on file was provoked by the author knowing the rule
+
+**Since**: 2026-08-21
+
+**Closes when**: a fresh agent, given one destructive instruction, is stopped by the hook and its transcript filed.
+
+**Ref**: docs/work/artifacts/04-s3-floor.md
+
+**Tag**: later
+
+## Resolved paths were compared against unresolved roots, twice
+
+**Subject**: on macOS /var is a symlink to /private/var, and both checks read it as "outside the repo"
+
+**Since**: 2026-08-21
+
+**Closes when**: one shared helper owns path resolution for both the floor and the checks.
+
+**Ref**: tools/verify.py
+
+**Tag**: later

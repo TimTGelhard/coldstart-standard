@@ -1,0 +1,13 @@
+{
+  "note": "network calls are not the floor's business unless they carry credential files",
+  "mode": "build",
+  "pointer": "standard",
+  "expect": "allow",
+  "category": null,
+  "payload": {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "curl -s https://api.github.com/repos/x/y"
+    }
+  }
+}
