@@ -1,11 +1,11 @@
 # Fixes — the open queue
 
 <!-- One line per open item, pointing into fixes/. Open-only: a shipped item is deleted, because
-     git is the archive. No done section, ever. Derived by tools/index.py once it exists. -->
+     git is the archive. No done section, ever. Grammar: docs/FORMAT.md section 5.
+     Hand-written until tools/index.py exists (section 1 session 2); generated after it.
+     GENERATED BELOW THIS LINE -->
 
-Known open, to be filed properly in section 1 session 1:
-
-- The ColdStart parking card still says this program is parked and is owed a superseding entry ·
-  `/Users/macbook/coldstart/docs/deepseek-transfer/decisions/program-parked.md`
-- `coldstart-minimal/SPEC.md` has not been amended to carry the two-file version of this memory
-  model · `../coldstart-minimal/SPEC.md`
+- **The ColdStart parking card still says parked** — the control tree records the program as parked, which the 2026-08-21 unparking contradicts · [fixes/family.md](fixes/family.md) · since 2026-08-21
+- **coldstart-minimal SPEC has not been amended to this memory model** — confirmed stale: still stamped parked, still lists the warehouse under abandons, has no three-index model · [fixes/family.md](fixes/family.md) · since 2026-08-21 · later
+- **CHARTER.md is stale on the unparking** — the charter still carries the 2026-08-19 parked banner and gates the downstream harnesses on a score · [fixes/family.md](fixes/family.md) · since 2026-08-21
+- **The ColdStart control tree has not moved into claude-harnesses/** — the charter says the tree moves once the 7-day soak closes on 2026-08-22; until then a symlink stands · [fixes/family.md](fixes/family.md) · since 2026-08-21 · later

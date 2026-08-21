@@ -1,3 +1,10 @@
+---
+title: Memory model
+subject: the three indexes, the three folders, and the tool that derives the indexes by scanning
+topic: memory-model
+updated: 2026-08-21
+---
+
 # Section 1 — memory-model
 
 > The section plan. Three sessions. Written at `/prep`, 2026-08-21.
@@ -11,7 +18,9 @@ clean tree.
 
 ## Session 1 — the shapes, and this tree adopts them
 
-**Status**: pending
+**Status**: done
+
+**Closed**: 2026-08-21
 
 **Goal**: fix the exact on-disk format of the three index files, the three folders and the
 pointer, and prove it by making this repo's own `docs/` the first instance.
