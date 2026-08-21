@@ -1,0 +1,6 @@
+# Harness runtime state: machine-local, wiped at every /done
+.coldstart-heartbeats
+.coldstart-trace
+
+# macOS
+.DS_Store
