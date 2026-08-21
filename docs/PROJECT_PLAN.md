@@ -8,7 +8,7 @@
 
 | # | Section | Goal | Depends on | Status |
 |---|---|---|---|---|
-| 1 | `memory-model` | The three indexes, the three folders, and the tool that derives the indexes by scanning | — | active |
+| 1 | `memory-model` | The three indexes, the three folders, and the tool that derives the indexes by scanning | — | done |
 | 2 | `commands` | `/coldstart`, `/prep`, `/done` — the lifecycle loop, each one skill deep | 1 | pending |
 | 3 | `resident-surface` | `CLAUDE.md`, the distilled profile, 4 routers, 3 agents, the chapter cut | 1, 2 | pending |
 | 4 | `safety-floor` | The PreToolUse hook that denies, plus its firing artifact | 1 | pending |

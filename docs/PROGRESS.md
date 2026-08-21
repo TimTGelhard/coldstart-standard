@@ -1,11 +1,11 @@
 ---
-active_work: docs/work/01-memory-model.md
+active_work:
 mode: build
-next_action: section 1 session 3 — write the read and close protocols into FORMAT.md, then prove a cold resume
+next_action: run /prep for section 2 (commands) — plan /coldstart, /prep and /done, each one skill deep
 blockers: []
-reading: [docs/PROGRESS.md, docs/FORMAT.md]
+reading: [docs/PROJECT_PLAN.md, docs/FORMAT.md]
 updated: 2026-08-21
-resume_note: "the indexes are generated and tested now; session 3 is the proof that a cold session resumes from the pointer alone"
+resume_note: "section 1 is closed and the cold resume is proved; section 2 turns FORMAT.md's close protocol into the actual /done"
 ---
 
 # Progress — coldstart-standard
@@ -22,10 +22,10 @@ time, one section at a time.
 
 ## Queue — sessions not yet done
 
-| # | Session | What it does | Status | File |
-|---|---|---|---|---|
-| 1.3 | memory-model s3 | prove the model does the job it exists for, which is that a session can start from the pointer and nothing else | pending | [work/01-memory-model.md](work/01-memory-model.md) |
+None open.
 
 ## Log — closed sections
 
-None yet.
+| # | Section | What it was | Closed | File |
+|---|---|---|---|---|
+| 01 | memory-model | the three indexes, the three folders, and the tool that derives the indexes by scanning | closed 2026-08-21 | [work/01-memory-model.md](work/01-memory-model.md) |

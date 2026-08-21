@@ -7,5 +7,5 @@
 
 - **Commands** — three commands (coldstart, prep, done), why /coldstart was restored, and what each dropped wrapper cost · [decisions/commands.md](decisions/commands.md) · 3 entries · 2026-08-21
 - **Install** — in-project install rather than a parallel root, the .claude / .coldstart split, and the weight selector · [decisions/install.md](decisions/install.md) · 3 entries · 2026-08-21
-- **Memory model** — three indexes over three folders, indexes derived by scanning, and the machinery deliberately not built · [decisions/memory-model.md](decisions/memory-model.md) · 11 entries · 2026-08-21
+- **Memory model** — three indexes over three folders, indexes derived by scanning, and the machinery deliberately not built · [decisions/memory-model.md](decisions/memory-model.md) · 12 entries · 2026-08-21
 - **Self-hosting** — this repo runs its own memory model during its own build, and ships without a comparator score · [decisions/self-hosting.md](decisions/self-hosting.md) · 4 entries · 2026-08-21

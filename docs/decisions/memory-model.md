@@ -124,3 +124,21 @@ paragraph moved at this session.
 
 `index.py --check` writes nothing and exits non-zero when any index is out of date. That is the
 form the `/done` no-op assertion takes, so the close does not have to diff files itself.
+
+## The cold-resume walk is measured, not asserted
+
+**Decided**: 2026-08-21
+
+The read protocol claims a resume costs the pointer plus at most one index and one file it names,
+with four files as the upper bound. At session 3 that claim was put to an agent with no
+conversation history, told only that `docs/PROGRESS.md` exists and asked what the active work is,
+what the next action is, and one decision already on file.
+
+It answered all three correctly and read exactly four files, in exactly the order section 8
+predicts: the pointer, the `active_work` file it names, `DECISIONS.md`, and the one decision file
+that index line points at. No path was given to it and none was guessed; every hop came off a line
+in the file before it.
+
+The bound therefore holds as a measurement rather than an intention, and the way it stays honest is
+that the same walk is re-run whenever the pointer's shape changes. A resume that needs a fifth file
+is not a slow resume, it is a pointer defect, and it is fixed in the session that finds it.

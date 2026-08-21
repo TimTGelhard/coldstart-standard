@@ -9,3 +9,4 @@
 - **coldstart-minimal SPEC has not been amended to this memory model** — confirmed stale: still stamped parked, still lists the warehouse under abandons, has no three-index model · [fixes/family.md](fixes/family.md) · since 2026-08-21 · later
 - **CHARTER.md is stale on the unparking** — the charter still carries the 2026-08-19 parked banner and gates the downstream harnesses on a score · [fixes/family.md](fixes/family.md) · since 2026-08-21
 - **The ColdStart control tree has not moved into claude-harnesses/** — the charter says the tree moves once the 7-day soak closes on 2026-08-22; until then a symlink stands · [fixes/family.md](fixes/family.md) · since 2026-08-21 · later
+- **The close has no exemption from the mode floor it writes** — the safety floor reads the pointer's mode the moment it lands, so a close can deny its own commit · [fixes/lifecycle.md](fixes/lifecycle.md) · since 2026-08-21 · later

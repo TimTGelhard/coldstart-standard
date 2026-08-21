@@ -2,8 +2,8 @@
 
 > Written at section 1 session 1, 2026-08-21, and implemented by `tools/index.py` at session 2.
 > The contract came first and the tool followed it; where session 2 amended this file, the
-> amendment is recorded in `decisions/memory-model.md`. The read protocol and
-> the close protocol are added to this file in session 3.
+> amendment is recorded in `decisions/memory-model.md`. Sections 8 and 9, the read protocol and
+> the close protocol, were added at session 3.
 
 The model is one mechanic applied three times: an **index file** that holds status and a pointer
 and structurally cannot hold detail, and a **folder** beside it that holds the content, clustered
@@ -238,3 +238,75 @@ There is no separate state file. The folders are canonical and the indexes are a
 them, which is why there is no canonical-versus-projection split here and no check that polices
 one. There is no `done` section in `FIXES.md`, no per-folder `MAP.md`, no ownership manifest, and
 no cap on container size beyond the split nudge above.
+
+## 8. The read protocol
+
+What a session reads at start, in what order, and where it stops. This is the whole of what makes
+storage cold: the folders are large and the resident cost is one front-matter block, because a
+session walks to a file and never loads a folder.
+
+1. **Read the pointer.** The front matter of `docs/PROGRESS.md`, and nothing else in that file
+   yet. Seven fields, and after them the session already knows what it is working on, what to do
+   next and whether it may start at all. A non-empty `blockers` stops here: report and ask, do not
+   begin.
+2. **Read `active_work`.** One file, named by the pointer, opened directly. No index is consulted
+   to find it, because the pointer already holds the path. Inside it, the session block whose
+   `Status` is not `done` is the session being continued.
+3. **Read the declared read list.** The `reading` field, in the order it is written. It is a
+   **ceiling**, not a suggestion: a read outside it is drift, and the session names it out loud
+   when it happens rather than after.
+4. **Stop.** Three steps, and the common case is two files plus the pointer. A session that has
+   not answered its question by here has a pointer problem, and the fix is to say so, not to keep
+   reading.
+
+**One index, at most two files.** When the session genuinely needs something the walk above did
+not reach, it opens exactly one of the three index files, reads the one or two lines that match,
+and opens the files those lines name. `DECISIONS.md` when the question is "why is it like this",
+`FIXES.md` when the question is "what is known broken", the `PROGRESS.md` queue when the question
+is "what else is planned".
+
+**Never wholesale.** No `cat docs/decisions/*.md`, no glob read of a folder, no "load the docs
+tree for context". A folder is storage, an index is the way in, and reading the folder to avoid
+reading the index is the exact move this model exists to make unnecessary. Grep over a folder is
+fine, because grep returns lines rather than files.
+
+The upper bound a healthy resume respects is **four files**: the pointer's file, the active work
+file, one index, and one file that index names. Session 3's cold-resume proof counts them from the
+resuming agent's own report, which is what makes the bound a measured property rather than a wish.
+
+## 9. The close protocol
+
+What `/done` does to the memory model, in order. This is the contract section 2 implements; it is
+written here first so that section builds to a spec rather than inventing one.
+
+1. **Verify before writing.** Run the active session's own `Verify` list and report the result.
+   Red or paused does not close: the session stays open and the pointer keeps pointing at it.
+2. **Update the content files, not the indexes.** The session's block in its work file goes to
+   `Status: done` and gains a `Closed:` date. New decisions are filed into the existing topic file
+   under `decisions/` that fits, or a new one when none does. New known-open items are added to
+   `fixes/`, and anything shipped this session has its `##` block deleted from there.
+3. **Regenerate.** `python tools/index.py` rewrites `PROGRESS.md`'s queue and log, `DECISIONS.md`
+   and `FIXES.md` from the folders. The session never hand-edits an index, and the pointer block
+   is untouched by this step.
+4. **Assert the regeneration is a no-op.** `python tools/index.py --check` exits zero. A non-zero
+   exit here means step 2 wrote something the format does not describe, and it is fixed before the
+   close continues rather than committed and noticed later.
+5. **Write the pointer, whole.** All seven fields composed from scratch: `active_work` for the
+   next session (or empty between sections), `mode`, a `next_action` specific enough to start on
+   cold, current `blockers`, the `reading` ceiling for the next session, today's `updated`, and one
+   sentence of `resume_note`. Nothing is appended and nothing is carried over unexamined.
+
+   **The close never writes a restrictive `mode`.** `mode` says what the *running* session may do,
+   and the safety floor reads it the instant it lands on disk. A close that writes `mode: prep`
+   here has therefore just denied its own remaining steps, because step 7's commit is a write and
+   the tree is now a planning tree. So the close leaves `mode: build` (or omits it, which resolves
+   the same way) and the next session declares its own mode when it starts. Section 3 discovered
+   this the hard way: the pointer it wrote locked the tree before the commit, and the last two
+   steps had to be unblocked by hand.
+6. **Nudge on clustering, do not gate.** If a topic file has grown past roughly 200 lines, say so
+   and propose the split. The close does not block on it.
+7. **Commit.** The session's declared `Output:` line is the commit message. Git is the history,
+   which is what lets the pointer carry none.
+
+`/done` is the single writer of the pointer and the single caller of `tools/index.py`. Both
+statements are what let a reader trust an index line without opening the file behind it.

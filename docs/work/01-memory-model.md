@@ -108,7 +108,9 @@ index above it
 
 ## Session 3 — the cold-resume proof
 
-**Status**: pending
+**Status**: done
+
+**Closed**: 2026-08-21
 
 **Goal**: prove the model does the job it exists for, which is that a session can start from the
 pointer and nothing else
