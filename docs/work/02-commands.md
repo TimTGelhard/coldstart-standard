@@ -92,7 +92,9 @@ other session in this project ends with
 
 ## Session 2 — `/coldstart`, the resume
 
-**Status**: pending
+**Status**: done
+
+**Closed**: 2026-08-21
 
 **Goal**: the read protocol becomes the command that opens every session, and the four-file bound
 is re-measured through it rather than by hand

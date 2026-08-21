@@ -87,3 +87,42 @@ close's own last step is a commit, so a close that writes `mode: prep` denies it
 steps. The previous harness found this by locking its own tree before the commit and unblocking the
 last two steps by hand.
 
+## The command surface does not count against the four-file bound
+
+**Decided**: 2026-08-21
+
+The bound is four files under `docs/`: the pointer's file, the active work file, one index, and one
+file that index names. The wrapper and the skill are the command being invoked, not tree reads, so
+they sit outside it.
+
+Two cold agents at session 2 derived this independently and unprompted, which is the signal it
+belonged in the skill rather than in each reader's head. The distinction is not bookkeeping: the two
+command reads are fixed, while the tree reads are what would grow with the project, and a bound that
+mixed them would stop measuring the thing it exists to measure.
+
+## The pointer is read by extraction, never by paging the top of the file
+
+**Decided**: 2026-08-21
+
+`sed -n '/^---$/,/^---$/p' docs/PROGRESS.md`, not `head -40`. Paging pulls the generated queue in
+behind the front matter and silently turns the pointer read into an index read, which defeats step
+1's own "and nothing else in that file yet".
+
+Both cold runs at session 2 did exactly that before the skill named the extraction, and the run
+after the amendment used it unprompted. The lesson generalises past this line: a step that cannot be
+followed literally is a defect in the step, not in the reader, and the fix is to write the command
+rather than to ask for more care.
+
+## The four-file bound survives being wrapped in a command
+
+**Decided**: 2026-08-21
+
+Section 1 session 3 measured the bound on the bare files. Section 2 session 2 re-measured it through
+`/coldstart` with three cold agents: four tree files for the full walk, three when the escape hatch
+was used, one when a planted blocker stopped the resume.
+
+Two properties held that were claimed rather than tested before. A resume can answer a question from
+an index line without opening the file behind it, because the generator carries source fields
+verbatim. And the `reading` list is a ceiling rather than a checklist: one run declined two files on
+it as unnecessary, which is the correct reading and the less likely drift.
+

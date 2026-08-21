@@ -1,11 +1,11 @@
 ---
 active_work: docs/work/02-commands.md
 mode: build
-next_action: section 2 session 2 — write commands/coldstart.md and skills/coldstart/SKILL.md to FORMAT.md section 8
+next_action: section 2 session 3 — write commands/prep.md, skills/prep/SKILL.md and templates/SESSION.md
 blockers: []
-reading: [docs/FORMAT.md, docs/work/02-commands.md, docs/decisions/memory-model.md]
+reading: [docs/FORMAT.md, docs/work/02-commands.md, SPEC.md]
 updated: 2026-08-21
-resume_note: "the close exists as a command now, so session 2 can be closed by it rather than by hand"
+resume_note: "two cold agents proved the resume through the command, so /prep is the last of the three and then the loop can run itself"
 ---
 
 # Progress — coldstart-standard
@@ -24,7 +24,6 @@ time, one section at a time.
 
 | # | Session | What it does | Status | File |
 |---|---|---|---|---|
-| 2.2 | commands s2 | the read protocol becomes the command that opens every session, and the four-file bound is re-measured through it rather than by hand | pending | [work/02-commands.md](work/02-commands.md) |
 | 2.3 | commands s3 | planning stops being borrowed from ColdStart and becomes this harness's own one-skill pass, writing work files that `tools/index.py` accepts | pending | [work/02-commands.md](work/02-commands.md) |
 | 2.4 | commands s4 | prove the three commands are a loop rather than three files, by running a whole section through them with no prose, and count what they cost resident | pending | [work/02-commands.md](work/02-commands.md) |
 

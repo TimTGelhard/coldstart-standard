@@ -21,3 +21,16 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 **Ref**: docs/FORMAT.md
 
 **Tag**: later
+
+## Testing the blocker path needs a pointer writer that is not `/done`
+
+**Subject**: the resume's refusal path can only be exercised by planting a blocker the close has no reason to write
+
+**Since**: 2026-08-21
+
+**Closes when**: the blocker path is exercised without a second pointer writer, or the plant is a named FORMAT.md exception
+
+**Ref**: docs/work/artifacts/02-s2-coldstart.md
+
+**Tag**: later
+
