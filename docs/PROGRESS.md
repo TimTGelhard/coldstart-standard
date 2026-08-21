@@ -1,11 +1,11 @@
 ---
 active_work: docs/work/02-commands.md
 mode: build
-next_action: section 2 session 3 — write commands/prep.md, skills/prep/SKILL.md and templates/SESSION.md
+next_action: section 2 session 4 — run a section through /prep, /coldstart, /done with no prose, then census the resident bytes
 blockers: []
-reading: [docs/FORMAT.md, docs/work/02-commands.md, SPEC.md]
+reading: [docs/work/02-commands.md, SPEC.md]
 updated: 2026-08-21
-resume_note: "two cold agents proved the resume through the command, so /prep is the last of the three and then the loop can run itself"
+resume_note: "the three commands exist and section 3 is planned, so session 4 is the loop running unattended and the first real byte count"
 ---
 
 # Progress — coldstart-standard
@@ -24,8 +24,11 @@ time, one section at a time.
 
 | # | Session | What it does | Status | File |
 |---|---|---|---|---|
-| 2.3 | commands s3 | planning stops being borrowed from ColdStart and becomes this harness's own one-skill pass, writing work files that `tools/index.py` accepts | pending | [work/02-commands.md](work/02-commands.md) |
 | 2.4 | commands s4 | prove the three commands are a loop rather than three files, by running a whole section through them with no prose, and count what they cost resident | pending | [work/02-commands.md](work/02-commands.md) |
+| 3.1 | resident-surface s1 | ColdStart's 84 chapters become the 12-15 this harness carries, each one a file that a router can name | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
+| 3.2 | resident-surface s2 | four skills route into the chapters, at a quarter of ColdStart's per-router description cost, and each one is proved to fire | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
+| 3.3 | resident-surface s3 | the always-loaded prose exists — delegation, signaling, the safety line and the pointer at the lifecycle — plus one profile file the operator edits by hand | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
+| 3.4 | resident-surface s4 | the three agents exist, and the whole resident surface is measured against the SPEC's predicted census with the delta stated either way | pending | [work/03-resident-surface.md](work/03-resident-surface.md) |
 
 ## Log — closed sections
 

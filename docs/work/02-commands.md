@@ -38,6 +38,7 @@ at its close.
   queue stays stale until the prep session's own `/done`. Session 3 hits this and must not
   silently pick. Recommendation: it stays stale, because the prep session closes with `/done`
   minutes later and a second caller of the generator is a second thing that can disagree.
+  **Settled at session 3**: it stays stale. Recorded in `decisions/commands.md`.
 
 ---
 
@@ -134,7 +135,9 @@ is re-measured through it rather than by hand
 
 ## Session 3 — `/prep`, the plan
 
-**Status**: pending
+**Status**: done
+
+**Closed**: 2026-08-21
 
 **Goal**: planning stops being borrowed from ColdStart and becomes this harness's own one-skill
 pass, writing work files that `tools/index.py` accepts

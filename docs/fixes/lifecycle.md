@@ -34,3 +34,15 @@ Open items only. A shipped item's block is deleted rather than struck through, p
 
 **Tag**: later
 
+## The floor's escape hatch names a tool this harness does not have
+
+**Subject**: the mode-contract refusal tells the operator to run tools/done.py --set-mode build, and tools/ holds index.py alone
+
+**Since**: 2026-08-21
+
+**Closes when**: this tree ships a mode writer the message can name, or the message points at the editor path `/prep` documents
+
+**Ref**: docs/work/artifacts/02-s3-prep.md
+
+**Tag**: later
+

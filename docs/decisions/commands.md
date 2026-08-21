@@ -126,3 +126,40 @@ an index line without opening the file behind it, because the generator carries 
 verbatim. And the `reading` list is a ceiling rather than a checklist: one run declined two files on
 it as unnecessary, which is the correct reading and the less likely drift.
 
+## /done stays the single caller of tools/index.py, and the queue is stale between prep and close
+
+**Decided**: 2026-08-21
+
+The open call from section 2's plan: whether `/prep` may regenerate the indexes when it writes a
+new work file, so the new sessions appear in the queue immediately.
+
+It may not. `/done` remains the only caller, and the queue in `PROGRESS.md` stays stale from the
+moment a work file is written until the planning session closes — minutes later, by the same
+operator, in the same sitting. The cost is a short window where the queue is behind its folder.
+The alternative cost is permanent: two callers are two things that can disagree with the folders,
+and the property that lets a reader trust an index line without opening the file behind it is that
+exactly one writer produced it.
+
+The same reasoning is why `/prep` writes `mode` and no other pointer field. A second writer is
+admitted only where the floor forces it, and then only over the one field the floor reads.
+
+## A prep pass has no shell, and `/prep` is written to that rather than around it
+
+**Decided**: 2026-08-21
+
+`/prep`'s first step writes `mode: prep`, and the safety floor reads that field the instant it
+lands. From then on the floor denies any shell it cannot prove read-only — including
+`python tools/index.py --check`, which writes nothing but cannot say so from its command string.
+
+The skill as first written told the pass to run that check before handing back, and the floor
+refused it on the first real firing. The step was wrong, not the floor: a floor that took a tool's
+word for its own read-onlyness is a floor anything can talk past.
+
+So the pass writes plan files with an editor and calls no tool. The work file is checked by eye
+against the six things the generator is strict about, and by the close minutes later — `/done`
+regenerates before it writes anything, so a malformed work file stops that close with a
+`FormatError` naming the file, before the pointer moves. The check moved from the pass that cannot
+run it to the close that must.
+
+One consequence is written into the skill because an abandoned pass hits it: a `/prep` that stops
+without closing puts `mode` back to `build` with an editor, because by then a `sed` is denied too.

@@ -29,7 +29,8 @@ the verify check is a backstop, not the enforcement.
 ## 1. The pointer
 
 The YAML front matter at the top of `docs/PROGRESS.md`, and the only part of this model that is
-ever resident in a session. `/done` is its single writer.
+ever resident in a session. `/done` is its single writer, with the one exception named in rule 1
+below.
 
 ```yaml
 ---
@@ -55,7 +56,12 @@ resume_note: "planned but not started; the indexes are hand-written until tools/
 
 Rules:
 
-1. **One writer.** `/done` writes the pointer. A session may read it and may not edit it.
+1. **One writer, with one named exception.** `/done` writes the pointer, and a session may
+   read it and may not edit it. The exception is `mode`: `/prep` sets `mode: prep` at the start of
+   a planning pass and touches none of the other six fields. The reason is narrow, so the exception
+   is — the safety floor reads `mode` off disk while the session runs, so a pass has to be able to
+   declare itself before it does anything. Added at section 2 session 3, when `/prep` was built;
+   the call is recorded in `decisions/commands.md`.
 2. **Nothing below the pointer restates a field from it.** Duplication is how a pointer starts
    disagreeing with its own file. If a fact belongs to the pointer, the body does not repeat it.
    The queue's link column is not a restatement of `active_work`: it names every session's file
